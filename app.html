@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sammy.JS Hackery</title>
+        <!-- This is a special version of jQuery with RequireJS built-in -->
+        <script src="scripts/app.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script src="scripts/lib/sammy.js"></script>
+		<script src="scripts/lib/sammy.mustache.js"></script>
+		<script src="scripts/lib/underscore.js"></script>
+    </head>
+    <body>
+		<div id="app"></div>
+		<ul class="nav">
+			<li><a href="#/">Home</a></li>
+			<li><a href="#/notes/">Notes</a></li>
+			<li><a href="#/todos/">Todos</a></li>
+		</ul>
+    </body>
+	<script type="text/javascript">
+		APP.Sammy = Sammy('#app', function() {
+			var s = this;
+			
+			this.use(Sammy.Mustache, 'ms');
+		    
+			_.each(APP.urlpatterns, function(url, i) {
+				var ns = url.get[1].split(".");
+				url.get ? s.get('#/' + url.get[0], APP[ns[0]][ns[1]]) : null;
+				url.post ? s.post('#/' + url.post[0], APP[ns[0]][ns[1]]) : null;
+			});
+						
+		}).run('#/');
+
+	</script>
+</html>
