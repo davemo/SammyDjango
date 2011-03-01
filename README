@@ -1,1 +1,6 @@
 This is some very simple hacking around Sammy.JS using some of the conventions from Django around views, templates and urls.py
+
+#TODO
+
+1. establish a convention by which module files can get loaded automagically by convention using something like labJS, requireJS or the YUI3 Loader
+2. establish a convention for template files to avoid having to explicitly render them
